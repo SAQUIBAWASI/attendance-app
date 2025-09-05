@@ -64,7 +64,7 @@ export default function ContactSection() {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm font-semibold mb-4">
+            <Badge className="bg-emerald-100 text-emerald-800 px-4 py-2 text-sm font-semibold mb-4">
               Get In Touch
             </Badge>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
@@ -80,14 +80,14 @@ export default function ContactSection() {
               <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full flex items-center justify-center">
                       <Phone className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">Call Us</h3>
                       <a 
                         href="tel:9014424455"
-                        className="text-blue-600 hover:text-blue-700 font-semibold transition-colors"
+                        className="text-emerald-600 hover:text-emerald-700 font-semibold transition-colors"
                       >
                         9014424455
                       </a>
@@ -100,14 +100,14 @@ export default function ContactSection() {
               <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full flex items-center justify-center">
                       <Mail className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">Email Us</h3>
                       <a 
                         href="mailto:info@timelycapital.com"
-                        className="text-blue-600 hover:text-blue-700 font-semibold transition-colors"
+                        className="text-emerald-600 hover:text-emerald-700 font-semibold transition-colors"
                       >
                         info@timelycapital.com
                       </a>
@@ -120,7 +120,7 @@ export default function ContactSection() {
               <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full flex items-center justify-center flex-shrink-0">
                       <MapPin className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -137,7 +137,7 @@ export default function ContactSection() {
               <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full flex items-center justify-center">
                       <Clock className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -152,7 +152,7 @@ export default function ContactSection() {
               {/* WhatsApp Button */}
               <Button 
                 onClick={openWhatsApp}
-                className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
+                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105"
               >
                 <MessageSquare className="w-5 h-5 mr-2" />
                 Chat on WhatsApp
@@ -180,7 +180,7 @@ export default function ContactSection() {
                           value={formData.name}
                           onChange={(e) => handleInputChange('name', e.target.value)}
                           required
-                          className="border-2 border-gray-200 focus:border-blue-600 rounded-lg"
+                          className="border-2 border-gray-200 focus:border-emerald-600 rounded-lg"
                         />
                       </div>
                       <div>
@@ -193,7 +193,7 @@ export default function ContactSection() {
                           value={formData.phone}
                           onChange={(e) => handleInputChange('phone', e.target.value)}
                           required
-                          className="border-2 border-gray-200 focus:border-blue-600 rounded-lg"
+                          className="border-2 border-gray-200 focus:border-emerald-600 rounded-lg"
                         />
                       </div>
                     </div>
@@ -208,7 +208,7 @@ export default function ContactSection() {
                         value={formData.email}
                         onChange={(e) => handleInputChange('email', e.target.value)}
                         required
-                        className="border-2 border-gray-200 focus:border-blue-600 rounded-lg"
+                        className="border-2 border-gray-200 focus:border-emerald-600 rounded-lg"
                       />
                     </div>
 
@@ -217,7 +217,7 @@ export default function ContactSection() {
                         Service Interested In *
                       </label>
                       <Select value={formData.service} onValueChange={(value) => handleInputChange('service', value)}>
-                        <SelectTrigger className="border-2 border-gray-200 focus:border-blue-600 rounded-lg">
+                        <SelectTrigger className="border-2 border-gray-200 focus:border-emerald-600 rounded-lg">
                           <SelectValue placeholder="Select a service" />
                         </SelectTrigger>
                         <SelectContent>
@@ -242,14 +242,14 @@ export default function ContactSection() {
                         value={formData.message}
                         onChange={(e) => handleInputChange('message', e.target.value)}
                         rows={4}
-                        className="border-2 border-gray-200 focus:border-blue-600 rounded-lg"
+                        className="border-2 border-gray-200 focus:border-emerald-600 rounded-lg"
                       />
                     </div>
 
                     <Button 
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? (
                         <>
@@ -265,12 +265,12 @@ export default function ContactSection() {
                     </Button>
                   </form>
 
-                  <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-                    <div className="flex items-center gap-2 text-blue-800">
+                  <div className="mt-6 p-4 bg-emerald-50 rounded-lg">
+                    <div className="flex items-center gap-2 text-emerald-800">
                       <CheckCircle className="w-5 h-5" />
                       <span className="font-semibold">Quick Response Guarantee</span>
                     </div>
-                    <p className="text-blue-700 text-sm mt-1">
+                    <p className="text-emerald-700 text-sm mt-1">
                       We'll respond to your inquiry within 2 hours during business hours.
                     </p>
                   </div>

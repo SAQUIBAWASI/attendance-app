@@ -12,7 +12,7 @@ export default function SpecialOffer() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-600">
+    <section className="py-20 bg-gradient-to-r from-emerald-600 to-teal-600">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <Card className="border-0 shadow-2xl bg-white/95 backdrop-blur-sm overflow-hidden">
@@ -36,7 +36,7 @@ export default function SpecialOffer() {
                   </h2>
                   
                   <div className="flex items-baseline gap-2 mb-4">
-                    <span className="text-5xl font-bold text-blue-600">₹799</span>
+                    <span className="text-5xl font-bold text-emerald-600">₹799</span>
                     <span className="text-xl text-gray-500 line-through">₹1999</span>
                     <Badge className="bg-green-500 text-white">60% OFF</Badge>
                   </div>
@@ -55,7 +55,9 @@ export default function SpecialOffer() {
                       'Free consultation included'
                     ].map((feature, index) => (
                       <div key={index} className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-green-500" />
+                        <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                          <CheckCircle className="w-3 h-3 text-white" />
+                        </div>
                         <span className="text-gray-700">{feature}</span>
                       </div>
                     ))}
@@ -64,7 +66,7 @@ export default function SpecialOffer() {
                   <Button 
                     onClick={scrollToContact}
                     size="lg"
-                    className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
+                    className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105"
                   >
                     Get Started Now
                     <ArrowRight className="w-5 h-5 ml-2" />
@@ -72,7 +74,7 @@ export default function SpecialOffer() {
                 </div>
                 
                 {/* Right Side - Visual Element */}
-                <div className="lg:w-1/3 bg-gradient-to-br from-blue-500 to-indigo-600 p-8 lg:p-12 flex items-center justify-center">
+                <div className="lg:w-1/3 bg-gradient-to-br from-emerald-500 to-teal-600 p-8 lg:p-12 flex items-center justify-center">
                   <div className="text-center text-white">
                     <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mb-6 mx-auto">
                       <FileText className="w-12 h-12" />

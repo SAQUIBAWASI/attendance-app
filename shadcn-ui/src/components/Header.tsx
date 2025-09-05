@@ -18,10 +18,12 @@ export default function Header() {
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">TC</span>
-            </div>
+          <div className="flex items-center space-x-3">
+            <img 
+              src="/images/Logo.jpg" 
+              alt="Timely Capital Logo" 
+              className="h-10 w-auto"
+            />
             <div>
               <h1 className="text-xl font-bold text-gray-900">Timely Capital</h1>
               <p className="text-xs text-gray-600">Right Capital for Right Growth</p>
@@ -32,31 +34,31 @@ export default function Header() {
           <nav className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('home')}
-              className="text-gray-700 hover:text-blue-600 transition-colors"
+              className="text-gray-700 hover:text-emerald-600 transition-colors"
             >
               Home
             </button>
             <button 
               onClick={() => scrollToSection('loans')}
-              className="text-gray-700 hover:text-blue-600 transition-colors"
+              className="text-gray-700 hover:text-emerald-600 transition-colors"
             >
               Loans
             </button>
             <button 
               onClick={() => scrollToSection('services')}
-              className="text-gray-700 hover:text-blue-600 transition-colors"
+              className="text-gray-700 hover:text-emerald-600 transition-colors"
             >
               Services
             </button>
             <button 
               onClick={() => scrollToSection('about')}
-              className="text-gray-700 hover:text-blue-600 transition-colors"
+              className="text-gray-700 hover:text-emerald-600 transition-colors"
             >
               About
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className="text-gray-700 hover:text-blue-600 transition-colors"
+              className="text-gray-700 hover:text-emerald-600 transition-colors"
             >
               Contact
             </button>
@@ -66,9 +68,11 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <a 
               href="tel:9014424455"
-              className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 transition-colors"
+              className="flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 transition-colors"
             >
-              <Phone className="w-4 h-4" />
+              <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center">
+                <Phone className="w-4 h-4 text-white" />
+              </div>
               <span className="font-semibold">9014424455</span>
             </a>
           </div>
@@ -88,39 +92,41 @@ export default function Header() {
             <div className="flex flex-col space-y-4 pt-4">
               <button 
                 onClick={() => scrollToSection('home')}
-                className="text-left text-gray-700 hover:text-blue-600 transition-colors"
+                className="text-left text-gray-700 hover:text-emerald-600 transition-colors"
               >
                 Home
               </button>
               <button 
                 onClick={() => scrollToSection('loans')}
-                className="text-left text-gray-700 hover:text-blue-600 transition-colors"
+                className="text-left text-gray-700 hover:text-emerald-600 transition-colors"
               >
                 Loans
               </button>
               <button 
                 onClick={() => scrollToSection('services')}
-                className="text-left text-gray-700 hover:text-blue-600 transition-colors"
+                className="text-left text-gray-700 hover:text-emerald-600 transition-colors"
               >
                 Services
               </button>
               <button 
                 onClick={() => scrollToSection('about')}
-                className="text-left text-gray-700 hover:text-blue-600 transition-colors"
+                className="text-left text-gray-700 hover:text-emerald-600 transition-colors"
               >
                 About
               </button>
               <button 
                 onClick={() => scrollToSection('contact')}
-                className="text-left text-gray-700 hover:text-blue-600 transition-colors"
+                className="text-left text-gray-700 hover:text-emerald-600 transition-colors"
               >
                 Contact
               </button>
               <a 
                 href="tel:9014424455"
-                className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 transition-colors"
+                className="flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 transition-colors"
               >
-                <Phone className="w-4 h-4" />
+                <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center">
+                  <Phone className="w-4 h-4 text-white" />
+                </div>
                 <span className="font-semibold">9014424455</span>
               </a>
             </div>

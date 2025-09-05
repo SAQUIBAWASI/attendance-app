@@ -36,7 +36,7 @@ export default function AboutSection() {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm font-semibold mb-4">
+            <Badge className="bg-emerald-100 text-emerald-800 px-4 py-2 text-sm font-semibold mb-4">
               About Us
             </Badge>
             <h2 className="text-4xl font-bold text-gray-900 mb-6">Timely Capital</h2>
@@ -66,7 +66,7 @@ export default function AboutSection() {
                     'Strong track record of success'
                   ].map((item, index) => (
                     <li key={index} className="flex items-center gap-3">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                      <div className="w-2 h-2 bg-emerald-600 rounded-full"></div>
                       <span className="text-gray-700">{item}</span>
                     </li>
                   ))}
@@ -76,7 +76,7 @@ export default function AboutSection() {
 
             {/* Right - Visual Element */}
             <div className="relative">
-              <div className="bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
+              <div className="bg-gradient-to-br from-emerald-600 to-teal-600 rounded-2xl p-8 text-white">
                 <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
                 <p className="text-lg opacity-90 mb-6">
                   To provide accessible, reliable, and transparent financial solutions that empower individuals and businesses to achieve their dreams and grow sustainably.
@@ -101,7 +101,7 @@ export default function AboutSection() {
               return (
                 <Card key={index} className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <CardContent className="p-8">
-                    <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
                       <IconComponent className="w-8 h-8 text-white" />
                     </div>
                     <div className="text-3xl font-bold text-gray-900 mb-2">{stat.number}</div>

@@ -63,7 +63,7 @@
                 "7"
             ],
             "backendDOMNodeId": 2,
-            "frameId": "9EDF845D122CCE6B99458B1A0EFC8F2E"
+            "frameId": "513B39AB5EC61080508D74B6DE770D97"
         },
         {
             "nodeId": "7",
@@ -183,8 +183,8 @@
             "properties": [],
             "parentId": "9",
             "childIds": [
-                "20",
                 "21",
+                "6",
                 "22"
             ],
             "backendDOMNodeId": 12
@@ -474,44 +474,10 @@
             "properties": [],
             "parentId": "8",
             "childIds": [
-                "5",
+                "20",
                 "4"
             ],
             "backendDOMNodeId": 11
-        },
-        {
-            "nodeId": "20",
-            "ignored": false,
-            "role": {
-                "type": "role",
-                "value": "generic"
-            },
-            "chromeRole": {
-                "type": "internalRole",
-                "value": 88
-            },
-            "name": {
-                "type": "computedString",
-                "value": "",
-                "sources": [
-                    {
-                        "type": "relatedElement",
-                        "attribute": "aria-labelledby"
-                    },
-                    {
-                        "type": "attribute",
-                        "attribute": "aria-label"
-                    },
-                    {
-                        "type": "attribute",
-                        "attribute": "title"
-                    }
-                ]
-            },
-            "properties": [],
-            "parentId": "12",
-            "childIds": [],
-            "backendDOMNodeId": 20
         },
         {
             "nodeId": "21",
@@ -548,6 +514,40 @@
             "backendDOMNodeId": 21
         },
         {
+            "nodeId": "6",
+            "ignored": false,
+            "role": {
+                "type": "role",
+                "value": "generic"
+            },
+            "chromeRole": {
+                "type": "internalRole",
+                "value": 88
+            },
+            "name": {
+                "type": "computedString",
+                "value": "",
+                "sources": [
+                    {
+                        "type": "relatedElement",
+                        "attribute": "aria-labelledby"
+                    },
+                    {
+                        "type": "attribute",
+                        "attribute": "aria-label"
+                    },
+                    {
+                        "type": "attribute",
+                        "attribute": "title"
+                    }
+                ]
+            },
+            "properties": [],
+            "parentId": "12",
+            "childIds": [],
+            "backendDOMNodeId": 6
+        },
+        {
             "nodeId": "22",
             "ignored": false,
             "role": {
@@ -579,8 +579,8 @@
             "properties": [],
             "parentId": "12",
             "childIds": [
-                "30",
                 "31",
+                "5",
                 "32",
                 "33"
             ],
@@ -4749,7 +4749,7 @@
             "backendDOMNodeId": 19
         },
         {
-            "nodeId": "5",
+            "nodeId": "20",
             "ignored": false,
             "role": {
                 "type": "role",
@@ -4780,9 +4780,9 @@
             "properties": [],
             "parentId": "11",
             "childIds": [
-                "6"
+                "30"
             ],
-            "backendDOMNodeId": 5
+            "backendDOMNodeId": 20
         },
         {
             "nodeId": "4",
@@ -4823,7 +4823,7 @@
             "backendDOMNodeId": 4
         },
         {
-            "nodeId": "30",
+            "nodeId": "31",
             "ignored": true,
             "ignoredReasons": [
                 {
@@ -4847,7 +4847,7 @@
                 "43",
                 "44"
             ],
-            "backendDOMNodeId": 30
+            "backendDOMNodeId": 31
         },
         {
             "nodeId": "43",
@@ -4895,7 +4895,7 @@
                     }
                 }
             ],
-            "parentId": "30",
+            "parentId": "31",
             "childIds": [
                 "76"
             ],
@@ -4931,14 +4931,14 @@
                 ]
             },
             "properties": [],
-            "parentId": "30",
+            "parentId": "31",
             "childIds": [
                 "77"
             ],
             "backendDOMNodeId": 44
         },
         {
-            "nodeId": "31",
+            "nodeId": "5",
             "ignored": false,
             "role": {
                 "type": "role",
@@ -4987,7 +4987,7 @@
             "childIds": [
                 "45"
             ],
-            "backendDOMNodeId": 31
+            "backendDOMNodeId": 5
         },
         {
             "nodeId": "32",
@@ -8561,7 +8561,7 @@
             "backendDOMNodeId": 3
         },
         {
-            "nodeId": "6",
+            "nodeId": "30",
             "ignored": false,
             "role": {
                 "type": "internalRole",
@@ -8585,11 +8585,11 @@
                 ]
             },
             "properties": [],
-            "parentId": "5",
+            "parentId": "20",
             "childIds": [
                 "-1000000002"
             ],
-            "backendDOMNodeId": 6
+            "backendDOMNodeId": 30
         },
         {
             "nodeId": "76",
@@ -8678,7 +8678,7 @@
                 ]
             },
             "properties": [],
-            "parentId": "31",
+            "parentId": "5",
             "childIds": [
                 "-1000000003",
                 "-1000000004"
@@ -10579,9 +10579,9 @@
                 "value": 101
             },
             "properties": [],
-            "parentId": "6",
+            "parentId": "30",
             "childIds": [],
-            "backendDOMNodeId": 6
+            "backendDOMNodeId": 30
         },
         {
             "nodeId": "-1000000012",
