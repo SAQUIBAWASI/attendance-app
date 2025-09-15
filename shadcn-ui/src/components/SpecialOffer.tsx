@@ -1,106 +1,176 @@
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { CheckCircle, Star, ArrowRight } from 'lucide-react';
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { ArrowRight, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
-export default function SpecialOffer() {
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+export default function SpecialOfferCarousel() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const restartTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // ✅ Auto Scroll Function
+  const startScroll = () => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+   
+    if (scrollIntervalRef.current) {
+      clearInterval(scrollIntervalRef.current);
+      scrollIntervalRef.current = null;
+    }
+
+    let scrollAmount = scrollContainer.scrollLeft; 
+    const scrollStep = 1; // speed
+
+    scrollIntervalRef.current = setInterval(() => {
+      if (scrollContainer) {
+        scrollAmount += scrollStep;
+        if (scrollAmount >= scrollContainer.scrollWidth / 2) {
+          scrollAmount = 0;
+        }
+        scrollContainer.scrollLeft = scrollAmount;
+      }
+    }, 20); // speed control
+  };
+
+  const stopScroll = () => {
+    if (scrollIntervalRef.current) {
+      clearInterval(scrollIntervalRef.current);
+      scrollIntervalRef.current = null;
     }
   };
 
+  // ✅ Stop & Restart After Delay (background click)
+  const pauseAndRestart = () => {
+    stopScroll();
+
+    if (restartTimeoutRef.current) {
+      clearTimeout(restartTimeoutRef.current);
+    }
+
+    restartTimeoutRef.current = setTimeout(() => {
+      startScroll();
+    }, 3000); // 3 sec delay
+  };
+
+  useEffect(() => {
+    startScroll();
+    return () => {
+      stopScroll();
+      if (restartTimeoutRef.current) {
+        clearTimeout(restartTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const offers = [
+    {
+      price: "₹799",
+      oldPrice: "₹1999",
+      title: "Tax Filing Starts From",
+      desc: "CA-Backed. Zero Hassle.",
+    },
+    {
+      price: "₹2999",
+      oldPrice: "₹4999",
+      title: "Register your business today",
+      desc: "GST, MSME registrations, Labour license",
+    },
+    {
+      price: "₹14999",
+      oldPrice: "₹24999",
+      title: "Register your private limited company",
+      desc: "Trusted by 100+ Businesses",
+    },
+  ];
+
   return (
-    <section className="py-20 bg-gradient-to-r from-emerald-600 to-teal-600">
+    <section
+      className="py-16 bg-gradient-to-r from-emerald-500 to-teal-500 relative overflow-hidden"
+      onClick={pauseAndRestart} // ✅ background click → pause + restart
+    >
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <Card className="border-0 shadow-2xl bg-white/95 backdrop-blur-sm overflow-hidden">
-            <CardContent className="p-0">
-              <div className="flex flex-col lg:flex-row">
-                {/* Left Side - Offer Details */}
-                <div className="lg:w-2/3 p-8 lg:p-12">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Badge className="bg-red-500 text-white px-3 py-1 text-sm font-semibold">
-                      Special Offer
-                    </Badge>
-                    <div className="flex items-center text-yellow-500">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-current" />
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                    Tax Filing Starts From
-                  </h2>
-                  
-                  <div className="flex items-baseline gap-2 mb-4">
-                    <span className="text-5xl font-bold text-emerald-600">₹799</span>
-                    <span className="text-xl text-gray-500 line-through">₹1999</span>
-                    <Badge className="bg-green-500 text-white">60% OFF</Badge>
-                  </div>
-                  
-                  <p className="text-xl text-gray-700 mb-6 font-semibold">
-                    CA-Backed. Zero Hassle.
-                  </p>
-                  
-                  <div className="space-y-3 mb-8">
-                    {[
-                      'Expert CA assistance',
-                      'Maximum tax refunds',
-                      'Error-free filing guaranteed',
-                      'All ITR forms supported',
-                      'Quick turnaround time',
-                      'Free consultation included'
-                    ].map((feature, index) => (
-                      <div key={index} className="flex items-center gap-3">
-                        <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
-                          <CheckCircle className="w-3 h-3 text-white" />
-                        </div>
-                        <span className="text-gray-700">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <Button 
-                    onClick={scrollToContact}
-                    size="lg"
-                    className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105"
-                  >
-                    Get Started Now
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
+        <h2 className="text-center text-3xl font-bold text-white mb-10">
+          Our Special Offers
+        </h2>
+
+        {/* Auto Scroll Wrapper */}
+        <div
+          ref={scrollRef}
+          className="flex gap-6 overflow-x-hidden whitespace-nowrap"
+          onMouseEnter={() => stopScroll()}   // ✅ Container hover → stop
+          onMouseLeave={() => startScroll()}  // ✅ Container leave → start
+        >
+          {[...offers, ...offers].map((offer, index) => (
+            <Card
+              key={index}
+              className="min-w-[280px] max-w-sm border-0 shadow-xl bg-white p-6 flex-shrink-0 cursor-pointer transform transition-transform duration-300 hover:scale-110" 
+              // ✅ Card hover → pop effect
+              onClick={(e) => {
+                e.stopPropagation(); 
+                stopScroll();
+                setIsModalOpen(true);
+              }}
+            >
+              <CardContent className="flex flex-col items-center text-center">
+                <Badge className="bg-red-500 text-white mb-4">Special Offer</Badge>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  {offer.title}
+                </h3>
+                <p className="text-gray-600 mb-4">{offer.desc}</p>
+
+                <div className="flex items-baseline gap-2 mb-4">
+                  <span className="text-4xl font-bold text-emerald-500">
+                    {offer.price}
+                  </span>
+                  <span className="text-lg text-gray-400 line-through">
+                    {offer.oldPrice}
+                  </span>
                 </div>
-                
-                {/* Right Side - Visual Element */}
-                <div className="lg:w-1/3 bg-gradient-to-br from-emerald-500 to-teal-600 p-8 lg:p-12 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mb-6 mx-auto">
-                      <FileText className="w-12 h-12" />
-                    </div>
-                    <h3 className="text-2xl font-bold mb-2">Limited Time</h3>
-                    <p className="text-lg opacity-90">Offer Valid Till</p>
-                    <p className="text-xl font-semibold">31st March 2025</p>
-                    
-                    <div className="mt-6 p-4 bg-white/10 rounded-lg">
-                      <p className="text-sm">Already helped</p>
-                      <p className="text-2xl font-bold">1000+</p>
-                      <p className="text-sm">clients save taxes</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
+
+      {/* ✅ Popup Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white rounded-2xl shadow-xl p-6 max-w-sm w-full relative">
+            <button
+              onClick={() => {
+                setIsModalOpen(false);
+                startScroll(); // Resume scrolling
+              }}
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
+              Connect to My Team
+            </h3>
+            <p className="text-gray-600 text-center mb-6">
+              Our experts are ready to assist you.
+            </p>
+
+            <a
+              href="https://wa.me/919014424455?text=Hi!%20I'm%20interested%20in%20your%20services."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <Button className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-6 py-3 rounded-full flex items-center justify-center">
+                Chat on WhatsApp
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </a>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
-
-const FileText = ({ className }: { className?: string }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-  </svg>
-);

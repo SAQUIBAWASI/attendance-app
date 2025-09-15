@@ -1,10 +1,15 @@
+import tailwindcssAspectRatio from "@tailwindcss/aspect-ratio";
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
-import tailwindcssAspectRatio from "@tailwindcss/aspect-ratio";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -16,6 +21,16 @@ export default {
     },
     extend: {
       colors: {
+        // 🎨 Override Tailwind blue & green
+        blue: {
+          DEFAULT: "#1668ac", // bg-blue
+          500: "#1668ac",    // bg-blue-500
+        },
+        green: {
+          DEFAULT: "#2ea698", // bg-green
+          500: "#2ea698",    // bg-green-500
+        },
+
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -60,6 +75,13 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
       },
+
+      // ✅ Custom Gradients
+      backgroundImage: {
+        "gradient-brand": "linear-gradient(90deg, #1668ac, #2ea698)",
+        "gradient-brand-diag": "linear-gradient(135deg, #1668ac, #2ea698)",
+      },
+
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -67,20 +89,12 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {

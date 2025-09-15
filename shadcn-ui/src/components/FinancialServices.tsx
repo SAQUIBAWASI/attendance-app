@@ -1,11 +1,11 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { 
-  FileText, 
-  Receipt, 
-  Building, 
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  ArrowRight,
+  Building,
   ClipboardCheck,
-  ArrowRight
+  FileText,
+  Receipt
 } from 'lucide-react';
 
 const financialServices = [

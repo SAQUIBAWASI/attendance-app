@@ -1,80 +1,109 @@
-import { Button } from '@/components/ui/button';
-import { Phone, Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { Menu, Phone, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  // 👇 Handle scroll when hash changes
+  useEffect(() => {
+    if (location.hash) {
+      const sectionId = location.hash.replace("#", "");
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
+
+  const scrollOrNavigate = (sectionId: string) => {
+    if (location.pathname === "/") {
+      // ✅ Already on home → just scroll
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // ✅ Navigate to home with hash → useEffect will scroll
+      navigate(`/#${sectionId}`);
     }
     setIsMenuOpen(false);
   };
 
+  const handleCall = () => {
+    window.location.href = "tel:9014424455";
+  };
+
+  const handleWhatsApp = () => {
+    window.open(
+      "https://wa.me/919014424455?text=Hi! I'm interested in your services.",
+      "_blank"
+    );
+  };
+
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+    <header className="fixed top-0 left-0 right-0 bg-white backdrop-blur-sm border-b border-transparent z-50">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <img 
-              src="/images/Logo.jpg" 
-              alt="Timely Capital Logo" 
+            <img
+              src="/images/logo3.jpg"
+              alt="Timely Capital Logo"
               className="h-10 w-auto"
             />
-            <div>
-              <h1 className="text-xl font-bold text-gray-900">Timely Capital</h1>
-              <p className="text-xs text-gray-600">Right Capital for Right Growth</p>
-            </div>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => scrollToSection('home')}
-              className="text-gray-700 hover:text-emerald-600 transition-colors"
-            >
-              Home
-            </button>
-            <button 
-              onClick={() => scrollToSection('loans')}
-              className="text-gray-700 hover:text-emerald-600 transition-colors"
-            >
-              Loans
-            </button>
-            <button 
-              onClick={() => scrollToSection('services')}
-              className="text-gray-700 hover:text-emerald-600 transition-colors"
-            >
-              Services
-            </button>
-            <button 
-              onClick={() => scrollToSection('about')}
-              className="text-gray-700 hover:text-emerald-600 transition-colors"
-            >
-              About
-            </button>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="text-gray-700 hover:text-emerald-600 transition-colors"
-            >
-              Contact
-            </button>
-          </nav>
+          <div className="hidden md:flex items-center space-x-8">
+            <nav className="flex items-center space-x-8">
+              <button
+                onClick={() => scrollOrNavigate("home")}
+                className="font-bold text-blue-500 hover:text-emerald-500 transition-colors"
+              >
+                Home
+              </button>
+              <button
+                onClick={() => scrollOrNavigate("about")}
+                className="font-bold text-blue-500 hover:text-emerald-500 transition-colors"
+              >
+                About
+              </button>
+              <button
+                onClick={() => scrollOrNavigate("services")}
+                className="font-bold text-blue-500 hover:text-emerald-500 transition-colors"
+              >
+                Services
+              </button>
+              <button
+                onClick={() => scrollOrNavigate("footer")}
+                className="font-bold text-blue-500 hover:text-emerald-500 transition-colors"
+              >
+                Contact
+              </button>
+            </nav>
 
-          {/* Call Button */}
-          <div className="hidden md:flex items-center space-x-4">
-            <a 
-              href="tel:9014424455"
-              className="flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 transition-colors"
-            >
-              <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center">
-                <Phone className="w-4 h-4 text-white" />
-              </div>
-              <span className="font-semibold">9014424455</span>
-            </a>
+            {/* Call & WhatsApp Buttons */}
+            <div className="flex flex-row gap-3">
+              <button
+                onClick={handleCall}
+                className="flex items-center justify-center w-10 h-10 transition bg-white rounded-full shadow hover:shadow-md"
+              >
+                <Phone size={18} className="text-blue-600" />
+              </button>
+              <button
+                onClick={handleWhatsApp}
+                className="flex items-center justify-center w-10 h-10 transition bg-white rounded-full shadow hover:shadow-md"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                  alt="WhatsApp"
+                  className="w-6 h-6"
+                />
+              </button>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -82,7 +111,11 @@ export default function Header() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden p-2"
           >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </button>
         </div>
 
@@ -90,45 +123,50 @@ export default function Header() {
         {isMenuOpen && (
           <nav className="md:hidden mt-4 pb-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4 pt-4">
-              <button 
-                onClick={() => scrollToSection('home')}
-                className="text-left text-gray-700 hover:text-emerald-600 transition-colors"
+              <button
+                onClick={() => scrollOrNavigate("home")}
+                className="font-semibold text-left text-gray-700 hover:text-emerald-500 transition-colors"
               >
                 Home
               </button>
-              <button 
-                onClick={() => scrollToSection('loans')}
-                className="text-left text-gray-700 hover:text-emerald-600 transition-colors"
-              >
-                Loans
-              </button>
-              <button 
-                onClick={() => scrollToSection('services')}
-                className="text-left text-gray-700 hover:text-emerald-600 transition-colors"
-              >
-                Services
-              </button>
-              <button 
-                onClick={() => scrollToSection('about')}
-                className="text-left text-gray-700 hover:text-emerald-600 transition-colors"
+              <button
+                onClick={() => scrollOrNavigate("about")}
+                className="font-semibold text-left text-gray-700 hover:text-emerald-500 transition-colors"
               >
                 About
               </button>
-              <button 
-                onClick={() => scrollToSection('contact')}
-                className="text-left text-gray-700 hover:text-emerald-600 transition-colors"
+              <button
+                onClick={() => scrollOrNavigate("services")}
+                className="font-semibold text-left text-gray-700 hover:text-emerald-500 transition-colors"
+              >
+                Services
+              </button>
+              <button
+                onClick={() => scrollOrNavigate("footer")}
+                className="font-semibold text-left text-gray-700 hover:text-emerald-500 transition-colors"
               >
                 Contact
               </button>
-              <a 
-                href="tel:9014424455"
-                className="flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 transition-colors"
-              >
-                <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center">
-                  <Phone className="w-4 h-4 text-white" />
-                </div>
-                <span className="font-semibold">9014424455</span>
-              </a>
+
+              {/* Call & WhatsApp (Mobile) */}
+              <div className="flex flex-row gap-3 pt-2">
+                <button
+                  onClick={handleCall}
+                  className="flex items-center justify-center w-10 h-10 transition bg-white rounded-full shadow hover:shadow-md"
+                >
+                  <Phone size={18} className="text-blue-600" />
+                </button>
+                <button
+                  onClick={handleWhatsApp}
+                  className="flex items-center justify-center w-10 h-10 transition bg-white rounded-full shadow hover:shadow-md"
+                >
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                    alt="WhatsApp"
+                    className="w-6 h-6"
+                  />
+                </button>
+              </div>
             </div>
           </nav>
         )}
