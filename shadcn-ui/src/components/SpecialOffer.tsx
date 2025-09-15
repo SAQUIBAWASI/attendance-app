@@ -7,7 +7,6 @@ import { useEffect, useRef, useState } from "react";
 export default function SpecialOfferCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const scrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
-  const restartTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -16,13 +15,12 @@ export default function SpecialOfferCarousel() {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
-   
     if (scrollIntervalRef.current) {
       clearInterval(scrollIntervalRef.current);
       scrollIntervalRef.current = null;
     }
 
-    let scrollAmount = scrollContainer.scrollLeft; 
+    let scrollAmount = scrollContainer.scrollLeft;
     const scrollStep = 1; // speed
 
     scrollIntervalRef.current = setInterval(() => {
@@ -33,7 +31,7 @@ export default function SpecialOfferCarousel() {
         }
         scrollContainer.scrollLeft = scrollAmount;
       }
-    }, 20); // speed control
+    }, 20);
   };
 
   const stopScroll = () => {
@@ -43,26 +41,10 @@ export default function SpecialOfferCarousel() {
     }
   };
 
-  // ✅ Stop & Restart After Delay (background click)
-  const pauseAndRestart = () => {
-    stopScroll();
-
-    if (restartTimeoutRef.current) {
-      clearTimeout(restartTimeoutRef.current);
-    }
-
-    restartTimeoutRef.current = setTimeout(() => {
-      startScroll();
-    }, 3000); // 3 sec delay
-  };
-
   useEffect(() => {
     startScroll();
     return () => {
       stopScroll();
-      if (restartTimeoutRef.current) {
-        clearTimeout(restartTimeoutRef.current);
-      }
     };
   }, []);
 
@@ -88,10 +70,7 @@ export default function SpecialOfferCarousel() {
   ];
 
   return (
-    <section
-      className="py-16 bg-gradient-to-r from-emerald-500 to-teal-500 relative overflow-hidden"
-      onClick={pauseAndRestart} // ✅ background click → pause + restart
-    >
+    <section className="py-16 bg-gradient-to-r from-emerald-500 to-teal-500 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <h2 className="text-center text-3xl font-bold text-white mb-10">
           Our Special Offers
@@ -101,22 +80,23 @@ export default function SpecialOfferCarousel() {
         <div
           ref={scrollRef}
           className="flex gap-6 overflow-x-hidden whitespace-nowrap"
-          onMouseEnter={() => stopScroll()}   // ✅ Container hover → stop
-          onMouseLeave={() => startScroll()}  // ✅ Container leave → start
         >
           {[...offers, ...offers].map((offer, index) => (
             <Card
               key={index}
-              className="min-w-[280px] max-w-sm border-0 shadow-xl bg-white p-6 flex-shrink-0 cursor-pointer transform transition-transform duration-300 hover:scale-110" 
-              // ✅ Card hover → pop effect
+              className="min-w-[280px] max-w-sm border-0 shadow-xl bg-white p-6 flex-shrink-0 cursor-pointer transform transition-transform duration-300 hover:scale-110"
+              onMouseEnter={stopScroll}   // ✅ Hover → Stop
+              onMouseLeave={startScroll}  // ✅ Hover out → Resume
               onClick={(e) => {
-                e.stopPropagation(); 
+                e.stopPropagation();
                 stopScroll();
                 setIsModalOpen(true);
               }}
             >
               <CardContent className="flex flex-col items-center text-center">
-                <Badge className="bg-red-500 text-white mb-4">Special Offer</Badge>
+                <Badge className="bg-red-500 text-white mb-4">
+                  Special Offer
+                </Badge>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   {offer.title}
                 </h3>
