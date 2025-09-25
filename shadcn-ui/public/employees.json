@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Amit Sharma",
+    "email": "amit.sharma@company.com",
+    "phone": "+91-9876543210",
+    "department": "Human Resources"
+  },
+  {
+    "name": "Priya Verma",
+    "email": "priya.verma@company.com",
+    "phone": "+91-9823456781",
+    "department": "Finance"
+  },
+  {
+    "name": "Rohit Singh",
+    "email": "rohit.singh@company.com",
+    "phone": "+91-9812345678",
+    "department": "Engineering"
+  },
+  {
+    "name": "Sneha Patel",
+    "email": "sneha.patel@company.com",
+    "phone": "+91-9765432109",
+    "department": "Marketing"
+  },
+  {
+    "name": "Karan Mehta",
+    "email": "karan.mehta@company.com",
+    "phone": "+91-9654321098",
+    "department": "Sales"
+  },
+  {
+    "name": "Anjali Gupta",
+    "email": "anjali.gupta@company.com",
+    "phone": "+91-9543210987",
+    "department": "Customer Support"
+  },
+  {
+    "name": "Vikram Rao",
+    "email": "vikram.rao@company.com",
+    "phone": "+91-9432109876",
+    "department": "Operations"
+  },
+  {
+    "name": "Neha Kapoor",
+    "email": "neha.kapoor@company.com",
+    "phone": "+91-9321098765",
+    "department": "Product Management"
+  },
+  {
+    "name": "Arjun Nair",
+    "email": "arjun.nair@company.com",
+    "phone": "+91-9210987654",
+    "department": "Engineering"
+  },
+  {
+    "name": "Meera Joshi",
+    "email": "meera.joshi@company.com",
+    "phone": "+91-9109876543",
+    "department": "Design"
+  }
+]

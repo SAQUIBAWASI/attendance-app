@@ -1,36 +1,38 @@
-# Timely Capital Website - MVP Implementation
-
-## Files to Create:
-1. **src/pages/Index.tsx** - Main homepage with all sections
-2. **src/components/Header.tsx** - Navigation header with logo
-3. **src/components/HeroSection.tsx** - Hero section with main CTA
-4. **src/components/LoanServices.tsx** - Loan services grid section
-5. **src/components/FinancialServices.tsx** - Financial services section
-6. **src/components/SpecialOffer.tsx** - Tax filing offer section
-7. **src/components/AboutSection.tsx** - About company with stats
-8. **src/components/TestimonialsSection.tsx** - Client testimonials
-9. **src/components/ContactSection.tsx** - Contact information and form
-10. **src/components/Footer.tsx** - Footer with company info
-11. **index.html** - Update title and meta tags
-
-## Key Features to Implement:
-- Responsive design with modern UI
-- All buttons functional with appropriate actions
-- Contact form with validation
-- Smooth scrolling navigation
-- Professional styling with gradients and animations
-- Mobile-friendly layout
-
-## Button Actions:
-- Apply Now → Scroll to contact section
-- Get Started → Scroll to contact section  
-- Book Consultation → Open contact form modal
-- WhatsApp button → Open WhatsApp chat
-- All service cards → Show more details or contact
-
-## Tech Stack:
-- React + TypeScript
-- Shadcn/ui components
-- Tailwind CSS for styling
-- React Hook Form for contact form
-- Lucide React for icons
+Employee Attendance Management System - MVP Implementation
+Core Features to Implement:
+1. Authentication & Employee Management
+Employee login/registration
+Employee profile with image capture
+Department and shift creation/management
+2. Attendance System
+Clock in/out with image capture
+Location verification (within 100m of office)
+Automatic attendance tracking
+3. Leave Management
+Leave application submission
+Approval workflow (Employee → Team Leader → Manager → HOD)
+Leave status tracking
+4. Dashboard Components
+Admin Dashboard: Total employees, attendance, leaves
+Employee Dashboard: Personal stats (total leaves, working days, lates)
+Navigation with role-based access
+5. Data Storage
+LocalStorage for MVP (simulating backend)
+Employee data, attendance records, leave applications
+Files to Create:
+src/pages/Login.tsx - Login page with employee authentication
+src/pages/Dashboard.tsx - Main dashboard with role-based views
+src/pages/EmployeeDashboard.tsx - Individual employee dashboard
+src/pages/LeaveManagement.tsx - Leave application and approval
+src/pages/CreateEmployee.tsx - Employee creation and management
+src/components/AttendanceCapture.tsx - Clock in/out with camera and location
+src/components/Navigation.tsx - Role-based navigation component
+src/lib/storage.ts - LocalStorage utilities for data management
+src/lib/location.ts - Location verification utilities
+src/types/index.ts - TypeScript interfaces
+Implementation Strategy:
+Use React Camera API for image capture
+Geolocation API for location tracking
+LocalStorage for data persistence
+Role-based UI rendering
+Mobile-responsive design with Tailwind CSS

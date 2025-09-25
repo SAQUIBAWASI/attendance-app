@@ -1,7 +1,8 @@
-import { defineConfig } from "vite";
+import { viteSourceLocator } from "@metagptx/vite-plugin-source-locator";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { viteSourceLocator } from "@metagptx/vite-plugin-source-locator";
+import { defineConfig } from "vite";
+
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
